@@ -1,19 +1,35 @@
-import express from "express";
-import { storage } from "./multerConfig.js"; // Importa a configuração de armazenamento
-import multer from "multer";
+import express from 'express';
+import multer from 'multer';
+import { storage } from './multerConfig.js';
+import { uploadFile } from './googleDrive.js';
+import fs from 'fs';
+import path from 'path';
 
-const app = express(); // Cria uma instância do express
+const app = express();
+const upload = multer({ storage: storage });
 
-const upload = multer({ storage: storage }); // Cria o middleware de upload usando a configuração de armazenamento
+const imageUrls = [];
 
-app.use("/files", express.static('uploads'))
+app.use("/files", express.static('uploads'));
 
-// Define uma rota para upload de arquivos
-app.post("/upload", upload.single("file"), (req, res) => {
+app.post("/upload", upload.single("file"), async (req, res) => {
+    const filePath = path.resolve('uploads', req.file.filename);
+    const fileUrl = await uploadFile(filePath, req.file.filename);
+
+    if (fileUrl) {
+        imageUrls.push(fileUrl);
+    }
+
+    // Opcional: Remover o arquivo local após o upload para o Google Drive
+    fs.unlinkSync(filePath);
+
     res.send("Arquivo enviado com sucesso!");
 });
 
-// Inicia o servidor na porta 3000
+app.get("/images", (req, res) => {
+    res.json(imageUrls);
+});
+
 app.listen(3000, () => {
     console.log("Servidor rodando na porta 3000");
 });

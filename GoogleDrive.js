@@ -1,9 +1,10 @@
 import fs from 'fs';
 import { google } from 'googleapis';
+import mime from 'mime-types';
 
 const GOOGLE_API_FOLDER_ID = '1CuKBwO0gsmMQ6SXkuV0LTESrkS3HF1WG';
 
-async function uploadFile() {
+export async function uploadFile(filePath, fileName) {
     try {
         const auth = new google.auth.GoogleAuth({
             keyFile: './googlekey.json',
@@ -15,29 +16,29 @@ async function uploadFile() {
             auth
         });
 
+        const mimeType = mime.lookup(filePath) || 'application/octet-stream';
+
         const fileMetaData = {
-            'name': 'image.png',
+            'name': fileName,
             'parents': [GOOGLE_API_FOLDER_ID]
         };
 
         const media = {
-            mimeType: 'image/png',
-            body: fs.createReadStream('./uploads/image.png') // Corrigido o caminho do arquivo
+            mimeType: mimeType,
+            body: fs.createReadStream(filePath)
         };
 
         const response = await driveService.files.create({
             resource: fileMetaData,
             media: media,
-            field: 'id' // Corrigido para "fields" no plural
+            fields: 'id'
         });
-        return response.data.id;
+
+        const fileId = response.data.id;
+        const fileUrl = `https://drive.google.com/uc?export=view&id=${fileId}`;
+        return fileUrl;
 
     } catch (err) {
         console.log('Upload file error', err);
     }
 }
-
-uploadFile().then(data => {
-    console.log(data);
-    // https://drive.google.com/uc?export=view&id=
-});

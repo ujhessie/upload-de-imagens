@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Upload de Imagem</title>
+</head>
+<body>
+    <h1>Upload de Imagem</h1>
+    <form action="/upload" method="post" enctype="multipart/form-data">
+        <input type="file" name="file" accept="image/*" required>
+        <button type="submit">Upload</button>
+    </form>
+
+    <h2>Imagens enviadas</h2>
+    <ul id="image-list"></ul>
+
+    <script>
+        async function fetchImages() {
+            const response = await fetch('/images');
+            const imageUrls = await response.json();
+            const imageList = document.getElementById('image-list');
+
+            imageList.innerHTML = '';
+            imageUrls.forEach(url => {
+                const li = document.createElement('li');
+                const img = document.createElement('img');
+                img.src = url;
+                img.width = 100;
+                li.appendChild(img);
+                imageList.appendChild(li);
+            });
+        }
+
+        fetchImages();
+    </script>
+</body>
+</html>
