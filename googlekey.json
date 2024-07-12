@@ -1,0 +1,13 @@
+{
+  "type": "service_account",
+  "project_id": "salvar-imagens",
+  "private_key_id": "d574ff7934665424fe30e108880cbef2d47d0ff6",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvQIBADANBgkqhkiG9w0BAQEFAASCBKcwggSjAgEAAoIBAQCw313+BzIHYb8E\nPYi7vf8sbNmGpjdldBKdO7Av59QJaHHO1tNfLaavbInfWGroYyf5LAOYCZoLrrzg\nno+T6zE8eUpsozAorArFRqK7+4wuV9XgZY8RYJCLabqXxhsa/YVTR1HT/3i15eeZ\nsonc8xFT6bhD1gLqSbbnYcGi9eEa5nU70530jwXvSH7e5m4UO+tjx0cr91dY9ylz\nYDMRNs+uVKjY+4anKhGQgVkq/rPrWUqydS4u7H3J2L34z7ZcE9uIEmO2St/X+Oh7\ncPuOU/RrRQ64gG9u2nwgwfsnZ0lPrKPOAXE9s7CeIi5h5N2dMw0Rp8nJUlycmQS0\nVZJP8xg7AgMBAAECggEAA3pt1fajD6CAdr9Io3u51OnSRuLMT0mlEN20bUmMOR/w\nsDY3s4Hct7Gh7hGsqIoRDMYszx40a7f+YHxw9/u1qcOVqLIQDfy0Ix6fr9d88W+Q\nwsTvt1Iq0lMJJ4rumLoVMSB2uRb0P/KxenhKwo/7iA1RYYqH31hrwskaKCMMHJ2u\nWUmjF7PXAqlm1oOLlieJbTTgyrRmVXdZk0bHsC1q1ftIvus9ele/0Xds5bYRjjc/\nPEC+X3C+c3f3vl+89UJBzJX+ks3qr3+V2IsH/3lPXpS9p9K06ltzaPquqtUSKsg6\nR2s/jrIry7ht/JiY6/VuMv8T5kefamq7zaSOOqDEoQKBgQDz1v78W6L/DD6jOhso\n4wNWOV+TnWxPdiLjZzwJw8BHQPPBbNislNI9MdxNvHXLtLUTx7bLP/DvLVXwOfDk\n16YPdENjl1QqVkD35n+Dgz8P94e6SeEWHG2hBhHrtj7tyt8WZNHw7ad044n+Uycm\ngs7GzAqqSy+uFu5sYhz5VNxktQKBgQC5sW1EDXROsWCkM6e8CQhbpwHr5Jfa3MYp\njtn/jt9KQUICyypmjJ30i5tbxamg92VRE776LUp56UJxlz8XFGVnPfXIL403XvGD\n3RJqCd5MjuQOZprpZg6XKlJgBmx9PIBFfvhnnReoC8Beu0cvwyk1gHlFM7Pne4vN\nev0xDv4PLwKBgFyl0uqF0u+/cklIuasWXl0znXoT9WRXybfHsMsxAmzQZA2ZUtZ4\nEU3JFSDAO62zsp2aY3zkhaILAr0s9resrF7w2O4NQKB5d2P5w3dvtdVWQs7oZUqm\ncI0fJk3+R/jH/W2fzxkQ43CJSBRG+fgq+XAVdPPxb2NhOSQbP1EJCliFAoGATae8\naRwzSoF1R9XuTH1+iE2kSREUzEtNd62szunhyTzXLTHnbnFZ0R3c/5j+4jjznt9i\nG197aNY6miRFFxLJgU5xDaGNLd2/pIR8Ieo0k9Gh37/bAsZSTbc+MbgeAJWfkvCR\nU0tnzDf13+fz0i6Mejpa/KytjJ2nDmxjm/OIHbMCgYEAgM5OFjNj+BuxmL5fj0vZ\nPiCNofFTjBnRwgSOyE1LPpP1udhzYfWa4kt6r7Djk+7KFb7Rh6xlxgEKXTTdvvrO\nAtKAW/yLzlK37tgMh0U8WAnEzMcB9q+sdX5ZaT2ajXDMBPhcAIiJUOGouVyctzQe\nyo/XAjnsc5CJLfbXgDZ4Mgc=\n-----END PRIVATE KEY-----\n",
+  "client_email": "contagoogledrive@salvar-imagens.iam.gserviceaccount.com",
+  "client_id": "103902818437069392870",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://oauth2.googleapis.com/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/contagoogledrive%40salvar-imagens.iam.gserviceaccount.com",
+  "universe_domain": "googleapis.com"
+}
