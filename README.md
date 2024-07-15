@@ -1,85 +1,59 @@
-# API de Upload de Arquivos
+# API de Upload de Imagens
 
-Esta API permite que os usuários façam upload de arquivos de imagem e os armazenem no Google Drive. Ela fornece endpoints para fazer upload de arquivos e recuperar a lista de URLs dos arquivos enviados.
+Esta é uma API de upload de imagens usando Express.js e Google Drive. A API permite fazer upload de imagens, salvar as URLs no servidor e servir as imagens para um front-end.
 
-## Índice
+## Funcionalidades
 
-- [Recursos](#recursos)
-- [Pré-requisitos](#pré-requisitos)
-- [Instalação](#instalação)
-- [Configuração](#configuração)
-- [Uso](#uso)
-- [Endpoints](#endpoints)
-- [Licença](#licença)
+- Fazer upload de imagens
+- Salvar URLs das imagens no servidor
+- Exibir imagens carregadas em uma página web
 
-## Recursos
+## Requisitos
 
-- Upload de arquivos de imagem.
-- Armazenar arquivos no Google Drive.
-- Recuperar URLs dos arquivos enviados.
-
-## Pré-requisitos
-
-- Node.js (v12 ou superior)
-- Projeto no Google Cloud com a API do Google Drive habilitada
-- Arquivo de credenciais da conta de serviço do Google (`googlekey.json`)
-
-## Instalação
-
-1. Clone o repositório:
-    ```bash
-    git clone https://github.com/seuusuario/api-upload-arquivos.git
-    cd api-upload-arquivos
-    ```
-
-2. Instale as dependências:
-    ```bash
-    npm install
-    ```
+- Node.js
+- Conta no Google Drive
+- Credenciais de API do Google Drive
 
 ## Configuração
 
-1. Coloque o arquivo de credenciais da conta de serviço do Google (`googlekey.json`) no diretório raiz do projeto.
-
-2. Crie um arquivo `.env` no diretório raiz e adicione o seguinte:
-    ```env
-    GOOGLE_API_FOLDER_ID=seu_id_da_pasta_no_google_drive
+1. Clone o repositório:
+    ```sh
+    git clone https://github.com/usuario/repo.git
+    cd repo
     ```
 
-## Uso
-
-1. Inicie o servidor:
-    ```bash
-    npm start
+2. Instale as dependências:
+    ```sh
+    npm install
     ```
 
-2. Abra seu navegador e navegue até `http://localhost:3000` para acessar a interface de upload.
+3. Crie um arquivo `googlekey.json` com as credenciais da API do Google Drive.
 
-## Endpoints
+4. Crie um arquivo `multerConfig.js` com o seguinte conteúdo:
 
-### `POST /upload`
+    ```javascript
+    import multer from 'multer';
+    import path from 'path';
 
-Faz o upload de um arquivo de imagem para o Google Drive.
+    const storage = multer.diskStorage({
+        destination: function (req, file, cb) {
+            cb(null, 'uploads/');
+        },
+        filename: function (req, file, cb) {
+            cb(null, `${Date.now()}-${file.originalname}`);
+        }
+    });
 
-#### Requisição
+    export { storage };
+    ```
 
-- `Content-Type`: `multipart/form-data`
-- `file`: O arquivo de imagem a ser enviado.
+## Estrutura do Projeto
 
-#### Resposta
-
-- Redireciona para a página principal (`/`) após um upload bem-sucedido.
-
-### `GET /images`
-
-Recupera uma lista de URLs das imagens enviadas.
-
-#### Resposta
-
-- `200 OK`: Um array de URLs de imagens.
-
-```json
-[
-    "https://drive.google.com/uc?export=view&id=exemplo1",
-    "https://drive.google.com/uc?export=view&id=exemplo2"
-]
+```plaintext
+├── public
+│   └── index.html
+├── uploads
+├── googlekey.json
+├── multerConfig.js
+├── server.js
+└── googleDrive.js
