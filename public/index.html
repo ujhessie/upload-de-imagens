@@ -17,22 +17,27 @@
 
     <script>
         async function fetchImages() {
-            const response = await fetch("/images");
-            const imageUrls = await response.json();
-            const imageList = document.getElementById("image-list");
+            try {
+                const response = await fetch("/images");
+                const imageUrls = await response.json();
+                console.log(imageUrls); // Log para verificar URLs
+                const imageList = document.getElementById("image-list");
 
-            imageList.innerHTML = "";
-            imageUrls.forEach((url) => {
-                const li = document.createElement("li");
-                const img = document.createElement("img");
-                img.src = url;
-                img.width = 100;
-                img.onerror = function () {
-                    console.error("Erro ao carregar imagem:", url);
-                };
-                li.appendChild(img);
-                imageList.appendChild(li);
-            });
+                imageList.innerHTML = "";
+                imageUrls.forEach((url) => {
+                    const li = document.createElement("li");
+                    const img = document.createElement("img");
+                    img.src = url;
+                    img.width = 100;
+                    img.onerror = function () {
+                        console.error("Erro ao carregar imagem:", url);
+                    };
+                    li.appendChild(img);
+                    imageList.appendChild(li);
+                });
+            } catch (error) {
+                console.error("Erro ao buscar imagens:", error);
+            }
         }
 
         fetchImages();
